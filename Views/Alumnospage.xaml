@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:pra.ViewModels"
+             x:Class="pra.Views.Alumnospage"
+             Title="Gestión de Alumnos"
+             BackgroundColor="Black"
+             x:DataType="viewmodels:AlumnoViewModel">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+
+            <!-- Título -->
+            <Label Text="Registro de Alumnos"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Formulario -->
+            <Frame Padding="15" CornerRadius="10" BackgroundColor="White"  HasShadow="True">
+                <StackLayout Spacing="10">
+
+                    <Entry Placeholder="Matrícula"
+                           Text="{Binding AlumnoActual.Matricula}"
+                           Keyboard="Text"
+                           TextColor="Black"/>
+
+                    <Entry Placeholder="Nombre(s)"
+                           Text="{Binding AlumnoActual.Nombre}" 
+                           TextColor="Black"/>
+
+                    <Entry Placeholder="Apellidos"
+                           Text="{Binding AlumnoActual.Apellidos}" 
+                           TextColor="Black"/>
+
+                    <Entry Placeholder="Correo"
+                           Text="{Binding AlumnoActual.Correo}"
+                           Keyboard="Email" 
+                           TextColor="Black"/>
+
+                    <Entry Placeholder="Carrera"
+                           Text="{Binding AlumnoActual.Carrera}" 
+                           TextColor="Black"/>
+
+                    <!-- Botones -->
+                    <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                        <Button Text="Agregar"
+                                Command="{Binding AgregarCommand}"
+                                BackgroundColor="#4CAF50"
+                                TextColor="White" />
+                        <Button Text="Editar"
+                                Command="{Binding EditarCommand}"
+                                BackgroundColor="#2196F3"
+                                TextColor="White" />
+                        <Button Text="Eliminar"
+                                Command="{Binding EliminarCommand}"
+                                BackgroundColor="#f44336"
+                                TextColor="White" />
+                    </HorizontalStackLayout>
+
+                </StackLayout>
+            </Frame>
+
+            <!-- Lista de alumnos -->
+       <ListView ItemsSource="{Binding ListaAlumnos}"
+          SelectedItem="{Binding AlumnoActual, Mode=TwoWay}"
+          
+          BackgroundColor="White"
+          Margin="0,10"
+          HasUnevenRows="True">
+    <ListView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <Frame BorderColor="LightGray"
+                       CornerRadius="10"
+                       BackgroundColor="#f8f8f8"
+                       Padding="10"
+                       Margin="5">
+                    <StackLayout>
+                        <Label Text="{Binding Nombre}" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="{Binding Apellidos}" TextColor="Black" />
+                        <Label Text="{Binding Correo}" FontSize="12" TextColor="Gray" />
+                        <Label Text="{Binding Carrera}" FontSize="12" TextColor="Black" />
+                        <Label Text="{Binding Matricula}" FontSize="10" TextColor="DarkGray" />
+                    </StackLayout>
+                </Frame>
+            </ViewCell>
+        </DataTemplate>
+    </ListView.ItemTemplate>
+</ListView>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

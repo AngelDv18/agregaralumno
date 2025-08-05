@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="pra.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:pra"
+    xmlns:viewmodels="clr-namespace:pra.ViewModels"
+    xmlns:views="clr-namespace:pra.Views"
+    Title="pra">
+
+    <ShellContent
+        Title="Alumnos"
+        ContentTemplate="{DataTemplate views:Alumnospage}"
+        Route="Alumnospage" />
+
+</Shell>
